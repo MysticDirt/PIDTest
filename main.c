@@ -111,8 +111,14 @@ int main(){
     Graph graph;
     graph.rows = 20; //can change value
     graph.cols = 40; //can change value
-    PIDController_Init(&pid);
+    PIDController_Init(&pid); //Sets values to 0
+    /*Set Limits:
+    PID pointer, Tau (Greater than 1), Integrator Min, Integrator Max, Output Min, Output Max
+    All changeable*/
     PIDController_SetLimits(&pid, 1.2f, -0.5f, 0.5f, -5.0f, 5.0f);
+    /*Set Terms:
+    PID pointer, Kp, Ki, Kd, Time
+    All changeable*/
     PIDController_SetTerms(&pid, 1.0f, 0.01f, 0.0f, 1.0f);
     make_space(&graph);
     populate(graph, &pid, setpoint, measured);
